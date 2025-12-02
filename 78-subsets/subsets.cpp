@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        int n=nums.size();
+        int total=1 <<n;
+        vector<vector<int>> result;
+        result.reserve(total);
+        for(int mask=0;mask<total;mask++){
+            vector<int> subsets;
+            for(int j=0;j<n;j++){
+                if(mask &(1<<j)) subsets.push_back(nums[j]);
+
+            }
+            result.push_back(move(subsets));
+
+        }
+        return result;
+    }
+};
